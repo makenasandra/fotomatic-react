@@ -1,0 +1,145 @@
+/* Header */
+
+header {
+  position: fixed;
+  width: 100%;
+  border-bottom: solid 1px #c6c1c1;
+  background-color: white;
+  /* height: 5.3125rem; */
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+}
+
+header .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem clamp(1rem, 5vw, 1.875rem);
+}
+
+header .logo {
+  flex: 0;
+  color: #4a4a4a;
+  font-size: clamp(1.05rem, 2.5vw, 2rem);
+  font-family: "Roboto Mono", monospace;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+header.desktop.logo {
+  width: 200px;
+}
+
+header nav ul {
+  padding-left: clamp(1rem, 2vw, 2.5rem);
+  display: flex;
+  list-style-type: none;
+}
+
+nav li {
+  padding-left: clamp(1rem, 2vw, 3.5rem);
+}
+
+nav a {
+  vertical-align: bottom;
+  line-height: 1.6;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: #4a4a4a;
+  text-decoration: none;
+  font-weight: 400;
+}
+
+header .icon {
+  width: 1.7rem;
+  padding-left: 0.75rem;
+}
+
+header .mobile {
+  display: none;
+}
+
+header .desktop .list-button {
+  display: none;
+}
+
+header .desktop .follow-button {
+  display: flex;
+  align-items: baseline;
+}
+
+@media only screen and (max-width: 768px) {
+  header nav ul {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav li {
+    width: auto;
+  }
+
+  nav a {
+    vertical-align: bottom;
+    width: auto;
+    font-size: clamp(0.7rem, 2.5vw, 1rem);
+  }
+
+  header .desktop .list-button {
+    display: block;
+    width: auto;
+  }
+
+  header .desktop .button {
+    display: flex;
+    padding: 0.1875rem 0.5rem;
+    background-color: #9dc20b;
+    line-height: 1.6;
+    color: white;
+  }
+}
+
+@media only screen and (max-width: 488px) {
+  header {
+    height: 3rem;
+  }
+
+  header .desktop {
+    display: none;
+  }
+
+  header .mobile {
+    display: block;
+    width: 100%;
+  }
+
+  header .content {
+    padding: 0.5rem 0;
+  }
+
+  nav a {
+    font-size: 1rem;
+  }
+
+  header .mobile ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+  }
+
+  header .mobile li {
+    padding: 0;
+  }
+
+  header .mobile .button {
+    padding: 0.1875rem 0.5rem;
+    background-color: #9dc20b;
+    line-height: 1.6;
+    color: white;
+  }
+}

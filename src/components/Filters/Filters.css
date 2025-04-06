@@ -1,0 +1,70 @@
+/* Filters Section */
+
+#filters-section {
+    padding: 4rem 0;
+    background-color: #4a4a4a;
+  }
+  
+  #filters-section .content {
+    padding: 0 0.625rem;
+    margin-bottom: 5rem;
+  }
+  
+  #filters-section .content h2 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  #filters-section .content h3 {
+    font-size: 1rem;
+    line-height: 1.4;
+    font-weight: 300;
+    color: white;
+  }
+  
+  #filters-section .images-container {
+    max-width: 100%;
+    padding: 0 1%;
+    display: flex;
+  }
+  
+  @media only screen and (max-width: 760px) {
+    #filters-section {
+      padding: 1.5rem 0 0 0;
+    }
+  
+    #filters-section .content {
+      flex-direction: column;
+      margin-bottom: 1rem;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    #filters-section .content h2 {
+      padding-bottom: 0;
+      font-size: 1.2rem;
+      line-height: 1.3;
+      font-weight: normal;
+      columns: white;
+      opacity: 100%;
+      margin-top: 0;
+    }
+  
+    #filters-section .content h3 {
+      font-size: 1rem;
+      line-height: 1.4;
+      columns: white;
+      font-weight: 300;
+      margin-top: 0;
+    }
+  
+    #filters-section .images-container {
+      padding: 0;
+    }
+  
+    #filters-section .extra {
+      display: none;
+    }
+  }
+  
