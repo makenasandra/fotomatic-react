@@ -1,26 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Checkout.css";
+import { useNavigate } from "react-router-dom";
 
 export default function CheckoutPage() {
+  const navigate = useNavigate()
   const [payOnDelivery, setPayOnDelivery] = useState(true);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const [options, setOptions] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     address: "",
+    placeId: "",
     cardNumber: "",
     expiry: "",
     cvv: "",
   });
+
+  useEffect(() => {
+    async function getPlaces() {
+      const response = await fetch(`http://localhost:3000/places/autocomplete?input=${formData.address}`);
+      console.log(formData.address)
+      if (!response.ok) return setOptions([]);
+      const data = await response.json();
+      const places = data.predictions;
+      setOptions(places);
+
+    }
+
+    getPlaces();
+  }, [formData.address]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
+  const handleSelect = (value) => {
+    const placeId = value.place_id;
+    const placeDescription = value.description;
+    setFormData({ ...formData, address:  placeDescription, placeId: placeId});
+    setShowSuggestions(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitting order:", formData);
     alert("Order placed successfully!");
+    navigate('/delivery', { state: formData })
   };
 
   return (
@@ -45,15 +72,28 @@ export default function CheckoutPage() {
           className="w-full p-3 border rounded-xl"
           required
         />
-        <input
-          type="text"
-          name="address"
-          placeholder="Shipping Address"
-          value={formData.address}
-          onChange={handleChange}
-          className="w-full p-3 border rounded-xl"
-          required
-        />
+      <div className="dropdown-container">
+      <input
+        type="text"
+        name="address"
+        placeholder="Shipping Address"
+        value={formData.address}
+        onChange={handleChange}
+        onBlur={() => setTimeout(() => setShowSuggestions(false), 100)} // slight delay for click
+        onFocus={() => formData.address && setShowSuggestions(true)}
+        required
+      />
+      {showSuggestions && options.length > 0 && (
+        <ul className="dropdown-list">
+          {options.map((addr, index) => (
+            <li key={index} onClick={() => handleSelect(addr)}>
+              {addr.description}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+
         <label className="checkbox-wrapper">
           <input
             type="checkbox"

@@ -6,11 +6,13 @@
 font-size: 3rem;
 }
 
-.checkout-section input {
+.checkout-section input, select {
   /* display: block; */
   margin-bottom: 1rem;
   width: 100%;
   padding: .7rem;
+  border: 1px solid #ccc;
+  border-radius: .8rem;
 }
 
 .checkbox-wrapper {
@@ -37,3 +39,40 @@ font-size: 3rem;
 background-color: black;
 color: white;
 }
+
+.dropdown-container {
+  position: relative;
+  width: 100%;
+}
+
+.dropdown-container input {
+  /* width: 100%;
+  padding: 12px;
+ 
+  box-sizing: border-box; */
+}
+
+.dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 12px 12px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 999;
+  list-style-type: none;
+}
+
+.dropdown-list li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-list li:hover {
+  background-color: #f0f0f0;
+}
+
