@@ -1,5 +1,6 @@
 import React from 'react';
 import './SignUp.css';
+import { Link } from 'react-router-dom';
 
 export default function SignUp() {
   return (
@@ -15,7 +16,7 @@ export default function SignUp() {
              Get yours today and be among the few to get out limited edition{" "}
               <strong>Febuary 2025</strong> release!
             </span>
-            <div class="button">Make Your Order</div>
+            <Link to="/checkout"><div class="button">Make Your Order</div></Link>
           </div>
         </div>
       </div>
